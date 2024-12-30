@@ -3,7 +3,40 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const router = express.Router();
-
+/**
+ * @swagger
+ * /api/auth/register:
+ *   post:
+ *     summary: Registro de usuario
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: Nombre de usuario
+ *                 example: "usuario123"
+ *               password:
+ *                 type: string
+ *                 description: Contraseña del usuario
+ *                 example: "password123"
+ *     responses:
+ *       201:
+ *         description: Usuario registrado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Usuario registrado"
+ *       400:
+ *         description: Error en la solicitud
+ */
 // Registro de usuario
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
@@ -16,6 +49,42 @@ router.post('/register', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Login de usuario
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: Nombre de usuario
+ *                 example: "usuario123"
+ *               password:
+ *                 type: string
+ *                 description: Contraseña del usuario
+ *                 example: "password123"
+ *     responses:
+ *       200:
+ *         description: Login exitoso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+ *       401:
+ *         description: Credenciales inválidas
+ *       500:
+ *         description: Error en el servidor
+ */
 // Login de usuario
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
