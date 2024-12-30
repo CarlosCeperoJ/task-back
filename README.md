@@ -10,9 +10,11 @@ Task Manager es una aplicación para gestionar tareas con una interfaz intuitiva
 - [Características](#características)
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
 - [Instalación](#instalación)
+- [Base de datos](#base-de-datos)
 - [Uso del Backend](#uso-del-backend)
 - [Capturas de Pantalla](#capturas-de-pantalla)
 - [Rutas del Backend](#rutas-del-backend)
+- [Manejo de Errores](#manejo-de-errores)
 - [Repositorios](#repositorios)
 - [Despliegue](#despliegue)
 
@@ -76,6 +78,16 @@ Incluye un backend desarrollado con Node.js y Express, y un frontend atractivo u
 2. Inicia la aplicación:
    npm run dev
 
+## **Base de datos**
+
+La base de datos utilizada es MongoDB Atlas para guardar los datos en la nube y asi poder desplegar nuestra aplicaion. La colección principal es tasks, y el esquema incluye los siguientes campos:
+
+_id: Identificador único generado automáticamente.
+title: Título de la tarea (obligatorio).
+description: Descripción de la tarea (opcional).
+completed: Estado de la tarea (booleano, por defecto false).
+createdAt: Fecha de creación (generada automáticamente).
+
    
 ## 🔧 Uso del Backend
 Puedes probar las rutas del backend utilizando herramientas como Postman o Thunder Client.
@@ -92,6 +104,13 @@ Ejemplo: Para registrar un usuario:
 ## 🔗 Rutas del Backend
 
 ![image](https://github.com/user-attachments/assets/aa352b0d-437d-42ea-90f6-2b8bba9ec4bb)
+
+## Manejo de Errores
+El API responde con códigos claros para los errores:
+
+400 Bad Request: Datos inválidos.
+404 Not Found: Recurso no encontrado.
+500 Internal Server Error: Error en el servidor.
 
 ## Repositorios
 
