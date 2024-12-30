@@ -161,12 +161,63 @@ router.post(
 
 /**
  * @swagger
- * /api/tasks/id:
+ * /api/tasks/{id}:
  *   put:
- *     summary: Actualizar tareas
+ *     summary: Actualizar una tarea
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID de la tarea
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 description: Título de la tarea
+ *                 example: "Tarea actualizada"
+ *               description:
+ *                 type: string
+ *                 description: Descripción de la tarea
+ *                 example: "Descripción actualizada"
+ *               completed:
+ *                 type: boolean
+ *                 description: Estado de la tarea
+ *                 example: true
  *     responses:
  *       200:
- *         description: Actualizar tareas
+ *         description: Tarea actualizada exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                   description: ID único de la tarea
+ *                   example: "64dfc63e0d1234567890abcd"
+ *                 title:
+ *                   type: string
+ *                   example: "Tarea actualizada"
+ *                 description:
+ *                   type: string
+ *                   example: "Descripción actualizada"
+ *                 completed:
+ *                   type: boolean
+ *                   example: true
+ *                 createdAt:
+ *                   type: string
+ *                   example: "2024-12-28T22:20:30.123Z"
+ *       400:
+ *         description: Error en la validación
+ *       404:
+ *         description: Tarea no encontrada
  */
 
 
@@ -198,12 +249,29 @@ router.put(
 
 /**
  * @swagger
- * /api/tasks/id:
+ * /api/tasks/{id}:
  *   delete:
- *     summary: Eliminar tarea
+ *     summary: Eliminar una tarea
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID de la tarea
  *     responses:
  *       200:
- *         description: Eliminar tarea
+ *         description: Tarea eliminada exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Task deleted"
+ *       404:
+ *         description: Tarea no encontrada
  */
 
 // Eliminar una tarea
