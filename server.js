@@ -15,17 +15,8 @@ connectDB();
 // Inicializar la aplicación
 const app = express();
 
-// Configura CORS para permitir solicitudes desde múltiples orígenes
-const allowedOrigins = ['http://localhost:5173', 'https://tu-dominio-en-produccion.com'];
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+
+app.use(cors());
 
 setupSwagger(app);
 
